@@ -22,7 +22,10 @@
         }
     </style>
 </head>
-<!--滚动条不可能出现在html上，只能在body或html的上层(窗口)上-->
+<!--滚动条不可能出现在html上，只能在body或html的上层(窗口)上
+    在html或者body中任意一个加overflow取值不为none，滚动条都会加在html外层的窗口上，必需2个都加overflow才行
+    若要禁止启动滚动条，html和body任意一个为overflow:hidden即可
+-->
 <body>
 <div id="test"></div>
 </body>
