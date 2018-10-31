@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        html,body{
+            height:100%;
+            overflow: hidden;
+            background-color: #000;
+            text-align: center;
+        }
+        h1{
+            display: inline-block;
+            color:rgba(255,255,255,.3);
+            font:bold 50px "微软雅黑";
+            margin-top:50px;
+            background-image: linear-gradient(120deg,rgba(255,255,255,0) 100px,rgba(255,255,255,1) 180px,rgba(255,255,255,0) 260px);
+            background-repeat: no-repeat;
+            -webkit-background-clip: text;
+        }
+    </style>
+</head>
+<body>
+<!--线性渐变 + -webkit-background-clip: text-->
+<h1>光斑动画demo</h1>
+<script>
+let h1 = document.querySelector('h1')
+let flag = -160     //和光斑的长度一样
+setInterval(() => {
+  flag += 5
+  if(flag >= h1.offsetWidth){
+    flag = -160
+  }
+  h1.style.backgroundPosition = flag + 'px'
+},1000/60)
+</script>
+</body>
+</html>

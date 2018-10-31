@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrap{
+            position: absolute;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            border:1px solid;
+            width:600px;
+            height:600px;
+            perspective: 1000px;
+            /*transform-style: p;*/
+        }
+        #wrap>.inner{
+            width:100px;
+            height:100px;
+            background-color: aqua;
+            position: absolute;
+            left:50%;
+            top:50%;
+            text-align: center;
+            font:50px/100px '微软雅黑';
+        }
+        #wrap>.one{
+            transform: translateZ(-100px);
+
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="box">
+        <div class="inner one">前</div>
+        <div class="inner two">后</div>
+        <div class="inner three">左</div>
+        <div class="inner four">右</div>
+        <div class="inner five">上</div>
+        <div class="inner six">下</div>
+    </div>
+</div>
+</body>
+</html>
