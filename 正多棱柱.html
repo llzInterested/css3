@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #wrap{
+      width:600px;
+      height:400px;
+      position: absolute;
+      left:0;top:0;right:0;bottom:0;
+      margin:auto;
+      border:1px solid;
+      perspective: 500px;
+    }
+    #wrap>.box{
+      width:300px;
+      height:100px;
+      position: absolute;
+      left:0;top:0;right:0;bottom:0;
+      margin:auto;
+      text-align: center;
+      font:50px/100px '微软雅黑';
+      transition: transform 10s;
+      transform-style: preserve-3d;
+    }
+    #wrap>.box>div{
+      width:300px;
+      height:100px;
+      position: absolute;
+      background-color: aqua;
+    }
+    #wrap:hover>.box{
+      transform: rotateY(720deg);
+    }
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <div class="box"></div>
+</div>
+<script>
+  /**
+   * 创建正n棱柱
+   * @param n
+   */
+  function createPrism(n){
+    let boxNode = document.querySelector('#wrap > .box')
+    let degOut = 360 / n            //一个外角(正n边形外角和为360)
+    let degIn = 180 - degOut         //一个内角
+    let text = ''
+    let styleNode = document.createElement('style')
+    let css = ''            //动态添加的css样式
+
+    for(let i = 0 ; i < n ; i++){
+      text += `<div>${i+1}</div>`
+      css += ` #wrap>.box>div:nth-child(${i+1}){
+        transform:rotateY(${i*degOut}deg)
+      }`
+    }
+
+    boxNode.innerHTML = text
+    let boxContainNode = document.querySelector(('#wrap > .box > div'))
+    let length = boxContainNode.offsetWidth      //获取棱长
+
+    css += `
+      #wrap>.box{
+        transform-origin: center center -${length / 2 * Math.tan(degIn / 2 * Math.PI / 180)}px;
+      }
+      #wrap>.box>div{
+        transform-origin: center center -${length / 2 * Math.tan(degIn / 2 * Math.PI / 180)}px;
+      }
+    `
+
+    styleNode.innerHTML = css
+    document.head.appendChild(styleNode)
+  }
+  createPrism(11)
+</script>
+</body>
+</html>

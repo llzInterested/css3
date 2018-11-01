@@ -15,25 +15,57 @@
             width:600px;
             height:600px;
             perspective: 1000px;
-            /*transform-style: p;*/
+            background-color: aqua;
         }
-        #wrap>.inner{
+        #wrap>.box{
             width:100px;
             height:100px;
-            background-color: aqua;
             position: absolute;
-            left:50%;
-            top:50%;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            margin:auto;
             text-align: center;
             font:50px/100px '微软雅黑';
+            transition: 5s;
+            transform-style: preserve-3d;
+            transform-origin: center center -50px;
         }
-        #wrap>.one{
-            transform: translateZ(-100px);
-
+        #wrap>.box>.inner{
+            width:100px;
+            height:100px;
+            background-color: blueviolet;
+            position: absolute;
+            transform-origin: center center -50px;
+            backface-visibility: hidden;
+        }
+        #wrap>.box>.one{
+        }
+        #wrap>.box>.two{
+            transform:rotateY(180deg) rotate(180deg);
+        }
+        #wrap>.box>.three{
+            transform: rotateY(270deg);
+        }
+        #wrap>.box>.four{
+            transform: rotateY(90deg);
+        }
+        #wrap>.box>.five{
+            transform: rotateX(90deg);
+        }
+        #wrap>.box>.six{
+            transform: rotateX(270deg);
+        }
+        #wrap:hover>.box{
+            transform: rotateX(360deg);
         }
     </style>
 </head>
 <body>
+<!--
+    以正方体中心为基点旋转各个面至相应位置
+-->
 <div id="wrap">
     <div class="box">
         <div class="inner one">前</div>
